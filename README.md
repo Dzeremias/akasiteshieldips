@@ -8,15 +8,10 @@ https://github.com/akamai/AkamaiOPEN-edgegrid-python
 You need to include a file called apiclient.txt in the scripts folder, which
 will contain your api client credentials in the format:
 
-"""
 client_secret
-
 https://base_url
-
 access_token
-
 client_token
-"""
 
 Api client needs to have read access to Siteshield and Firewall notifications.
 
