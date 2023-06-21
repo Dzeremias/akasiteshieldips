@@ -27,7 +27,7 @@ def make_session():
     return session, burl
 
 def write_output(data:tuple):
-    filenames = ("siteshield.txt", "siteshield_staging.txt", "siteshield_staging_v6.txt", "siteshieldv6.txt" )
+    filenames = ("siteshield.txt", "staging_siteshield.txt", "staging_siteshield_v6.txt", "siteshield_v6.txt" )
     for i, iplist in enumerate(data):
         filepath = f"{os.path.dirname(os.path.abspath(__file__))}/{filenames[i]}"
         f = open(filepath, "w", encoding="utf-8")
