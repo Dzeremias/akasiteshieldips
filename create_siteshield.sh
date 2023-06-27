@@ -19,7 +19,7 @@ while read line; do
 done < siteshield.txt
 
 while read line; do
-	echo "adding $line to $name_stage"
+	echo "Adding $line to $name_stage"
 	ipset add $name_stage $line;
 done < staging_siteshield.txt
 
