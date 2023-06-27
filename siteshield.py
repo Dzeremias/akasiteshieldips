@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 from edgegrid.edgegrid import EdgeGridAuth
 from urllib.parse import urljoin
 import requests
@@ -30,18 +31,20 @@ def write_output(data:tuple):
     filenames = ("siteshield.txt", "staging_siteshield.txt", "staging_siteshield_v6.txt", "siteshield_v6.txt" )
     for i, iplist in enumerate(data):
         filepath = f"{os.path.dirname(os.path.abspath(__file__))}/{filenames[i]}"
-        f = open(filepath, "w", encoding="utf-8")
-        for item in iplist:
-            #newline at the end of file is intentional
-            f.write(f"{item}\n")
-        f.close()
+        print(f"Saving content to {filepath}")
+        with open(filepath, "w", encoding="utf-8") as f:
+            for item in iplist:
+                #newline at the end of file is intentional
+                f.write(f"{item}\n")
 
-def log_response(r: requests.Response):
-    with open ("log.txt", "a", encoding="utf-8") as f:
+def log_response(r):
+    filename = f"{os.path.dirname(os.path.abspath(__file__))}/log.txt"
+    print(f"Logging into {filename}")
+    with open (filename, "a", encoding="utf-8") as f:
         try:
             f.write(f"timestamp: {datetime.now().strftime('%d-%m-%y %H:%M:%S')};\n code: {r.status_code};\n headers: {r.headers};\n body:{r.json()}\n\n")
         except ValueError:
-            f.write(f"Something broke :(")
+            f.write(f"Something broke :(\n {r.headers}")
 
 def get_data(s: requests.Session, burl: str):
     headers = {"accept": "application/json"}
