@@ -8,12 +8,12 @@ https://github.com/akamai/AkamaiOPEN-edgegrid-python
 You need to include a file called apiclient.txt in the scripts folder, which
 will contain your api client credentials in the format:
 
-client_secret
-https://base_url
-access_token
-client_token
+*client_secret*  
+https://*base_url*  
+*access_token*  
+*client_token*  
 
 Api client needs to have read access to Siteshield and Firewall notifications.
 
-Use sudo run.sh to automatically run all the scripts, generate the necessary data
-and apply it to IPtables configuration.
+Use sudo run.sh, or schedule it via CRON job to automatically run all the scripts, generate the necessary data
+and apply it to IPtables configuration. IPv6 is currently not supported in production Siteshield, so I'm not including it.
