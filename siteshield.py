@@ -64,6 +64,8 @@ def get_data(s: requests.Session, burl: str):
         ssstage = []
         ssv6stage = []
         for item in r.json():
+            if not item["serviceName"] == "SESN":
+                continue
             cidr = f"{item['cidr']}{item['cidrMask']}"
             if ":" in cidr:
                 ssv6stage.append(cidr)
